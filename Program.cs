@@ -7,8 +7,10 @@ namespace unosquareCSharpConcepts
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Clear();
+
 
             //1.- Generics
             Console.WriteLine("***1.- Generics***");
@@ -95,8 +97,13 @@ namespace unosquareCSharpConcepts
                 NumberOfTanks = 2
             };
 
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Cannot instantiate base class because is abstract very important because thats why we make it abstract to avoid create instances of the base class");
             Console.WriteLine("var race = new AbstractStarcraftRace(); is impossible");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Green;
             //var race = new AbstractStarcraftRace();
             Console.WriteLine("zerg true damage: " + zerg.OverallDamage);
             Console.WriteLine("proto true damage: " + proto.OverallDamage);
@@ -131,7 +138,13 @@ namespace unosquareCSharpConcepts
                 NumberOfTanks = 2
             };
 
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("In this Example I'm calling .GetTrueDamage() . This method can be implemented later on the development timeline for example can be implemented in zerg and proto but still not implemented in terran so I can continue working while my colleagues can implement that functionality later. ");
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Green;
+
             //var race = new AbstractStarcraftRace();
             Console.WriteLine("zerg true damage: " + zerg1.GetTrueDamage());
             Console.WriteLine("proto true damage: " + proto1.GetTrueDamage());
@@ -142,6 +155,9 @@ namespace unosquareCSharpConcepts
 
 
             //4.- Delegates and Generic Delegate Types
+            Console.WriteLine("***4.- Delegates and Generic Delegate Types***");
+            Console.WriteLine("");
+            Console.WriteLine("");
             Func<int, float, double, double> obj1 = (x, y, z) =>
             {
                 return x + y + z;
@@ -161,13 +177,58 @@ namespace unosquareCSharpConcepts
             Console.ReadKey();
 
             //5.- Extension Methods(how to declare them, usage, etc.)
+            Console.WriteLine("***5.- Extension Methods(how to declare them, usage, etc.)***");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            string exampleText = "This is a test for Extension Methods";
+            int wordCount = exampleText.WordCount();
+            Console.WriteLine("Extension Methods word count:");
+            Console.WriteLine(exampleText + " : " + wordCount);
 
+            Console.ReadKey();
+            Console.Clear();
 
             //6.- Null Coalescing and Elvis Operator
+            Console.WriteLine("***6.- Null Coalescing and Elvis Operator***");
+            Console.WriteLine("");
+            Console.WriteLine("");
 
+            bool? boolVar = null;
+
+            string result = string.Empty;
+
+            Console.WriteLine("Bool coalescing if boolVar is null send false boolVar?? false ");
+            result = (boolVar ?? false).ToString();
+            Console.WriteLine(result);
+
+            int? number = null;
+            Console.WriteLine("Int coalescing if number is null send zero '0' number?? 0 ");
+            result = (number ?? 0).ToString();
+            Console.WriteLine(result);
+
+
+             number = 25;
+            Console.WriteLine("Int if inline if number is 25 send TT else number  number == 25 ? \"TT\" : number.ToString()");
+            result = number == 25 ? "TT" : number.ToString();
+            Console.WriteLine(result);
+
+
+            Console.WriteLine("person?.Name.Write() Write() is not called due to short-circuit ");
+            Person person = null;
+            person?.Name.Write(); // no output: Write() is not called due to short-circuit.
+            try
+            {
+                Console.WriteLine("(person?.Name).Write(); is returns an error ");
+                (person?.Name).Write();
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("NullReferenceException");
+            }; // output: NullReferenceException
 
             Console.ReadKey();
         }
+
 
         public static bool CheckLength(string name)
         {
